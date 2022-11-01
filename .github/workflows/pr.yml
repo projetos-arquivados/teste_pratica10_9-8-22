@@ -16,6 +16,6 @@ jobs:
           envkey_DATABASE_URL: ${{secrets.DATABASE_URL}}
           file_name: .env.test
       - name: Run tests
-        run: docker-compose -f docker-compose.test.yml run back-end_students_test npm run test
+        run: docker-compose -f docker-compose.test.yml run back-end_student_service_test npm run test
       - name: Build
         run: npm i && npm run build
