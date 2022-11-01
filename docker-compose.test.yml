@@ -1,0 +1,21 @@
+services:
+  db_student_service_test:
+    image: postgres
+    container_name: db_students_test
+    restart: always
+    ports: 
+      - 1234:5432
+    env_file:
+      - .env.test
+
+  back-end_student_service_test:
+    container_name: back-end_students_test
+    build:
+      context: .
+      dockerfile: dockerfile.test
+    ports: 
+      - 5000:5000
+    depends_on:
+      - db_student_service_test
+    env_file:
+      - .env.test
